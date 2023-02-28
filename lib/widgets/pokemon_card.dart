@@ -27,22 +27,26 @@ class PokemonCard extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Image.network(snapshot.data.sprites.frontDefault, height: 100,),
-                const SizedBox(width: 20,),
-                Text(
-                  "${snapshot.data.name[0].toUpperCase()}${snapshot.data.name.substring(1).toLowerCase()}",
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold
+                Image.network(snapshot.data.sprites.frontDefault ?? '', height: 100),
+                Expanded(
+                  child: Text(
+                    "${snapshot.data.name[0].toUpperCase()}${snapshot.data.name.substring(1).toLowerCase()}",
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold
+                    ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
                 const Expanded(child: SizedBox()),
                 Text(
                   '#${snapshot.data.id}',
                   style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    
                   ),
+
                 ),
               ],
             ),
