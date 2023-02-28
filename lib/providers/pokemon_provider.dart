@@ -10,6 +10,8 @@ class PokemonProvider extends ChangeNotifier {
 
   final String _baseURL = 'https://pokeapi.co';
 
+  String _count = '0';
+
   List<Result> pokemonResults = [];
 
   Map<String, Pokemon> pokemonData = {};
@@ -26,9 +28,13 @@ class PokemonProvider extends ChangeNotifier {
   }
 
   getPokemonNames() async {
-    final data = await _getJsonData('/api/v2/pokemon?limit=1279');
+    final countInfo = await _getJsonData('/api/v2/pokemon');
+    final countResponse = pokemonResponseFromJson(countInfo);
+    _count = countResponse.count.toString();
+    final data = await _getJsonData('/api/v2/pokemon?limit=$_count');
     final pokemonResponse = pokemonResponseFromJson(data);
     pokemonResults = pokemonResponse.results;
+    
     notifyListeners();
   }
 
