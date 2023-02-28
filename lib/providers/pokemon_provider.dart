@@ -8,7 +8,7 @@ import 'package:pokemon_api/models/pokemon_response.dart';
 
 class PokemonProvider extends ChangeNotifier {
 
-  String _baseURL = 'https://pokeapi.co';
+  final String _baseURL = 'https://pokeapi.co';
 
   List<Result> pokemonResults = [];
 
