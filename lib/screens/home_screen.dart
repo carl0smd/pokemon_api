@@ -16,6 +16,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Pokemon API'),
         centerTitle: true,
+        backgroundColor: Colors.redAccent,
       ),
       body: Center(
         child: ListView.builder(
